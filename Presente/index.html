@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Para Minha Atleta ❤️</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;font-family:'Segoe UI',Arial,sans-serif;overflow-x:hidden}
+        .floating-heart{position:fixed;pointer-events:none;z-index:1000;font-size:20px;animation:floatLove 6s ease-out forwards;opacity:0}
+        @keyframes floatLove{0%{transform:translateY(0) scale(0.5) rotate(0deg);opacity:0}10%{opacity:0.8}90%{opacity:0.6}100%{transform:translateY(-100vh) scale(1.5) rotate(360deg);opacity:0}}
+        #login{height:100vh;display:flex;justify-content:center;align-items:center;padding:16px}
+        .glass{background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);border-radius:30px;padding:50px 30px;text-align:center;width:90%;max-width:420px;color:white;border:1px solid rgba(255,255,255,0.3);box-shadow:0 25px 45px rgba(0,0,0,0.2);animation:fadeInUp 0.8s ease-out}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:translateY(0)}}
+        .glass h1{font-size:clamp(1.8rem,6vw,2.2rem);margin-bottom:15px;background:linear-gradient(135deg,#fff,#ffe0f0);-webkit-background-clip:text;background-clip:text;color:transparent}
+        .dica-musica{margin-top:20px;padding:12px;background:rgba(255,255,255,0.15);border-radius:15px;font-size:13px;animation:pulse 2s infinite}
+        @keyframes pulse{0%,100%{transform:scale(1);opacity:0.7}50%{transform:scale(1.02);opacity:1}}
+        input{width:100%;padding:15px 20px;margin-top:20px;border:none;border-radius:50px;font-size:16px;background:rgba(255,255,255,0.9);text-align:center}
+        input:focus{outline:none;background:white;box-shadow:0 0 20px rgba(255,255,255,0.5)}
+        button{width:100%;padding:15px;margin-top:20px;border:none;border-radius:50px;background:linear-gradient(135deg,#ff6b6b,#ee5a24);color:white;cursor:pointer;font-weight:bold;font-size:18px}
+        button:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(0,0,0,0.2)}
+        #conteudo{display:none;padding:20px 16px}
+        header{text-align:center;color:white;margin-bottom:50px}
+        header h1{font-size:clamp(2rem,7vw,3rem);margin-bottom:10px}
+        .timeline{max-width:800px;margin:auto}
+        .card{background:white;margin-bottom:40px;border-radius:25px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.2);transform:translateX(-100px);opacity:0;transition:all 0.8s}
+        .card:nth-child(even){transform:translateX(100px)}
+        .card.show{transform:translateX(0);opacity:1}
+        .card img{width:100%;height:auto;min-height:280px;max-height:450px;object-fit:cover}
+        .card h2{padding:20px 20px 10px;color:#333}
+        .card p{padding:0 20px 25px;color:#666}
+        .carta{max-width:700px;margin:50px auto;background:linear-gradient(135deg,#fff9f9,#fff);border-radius:30px;padding:40px 35px;text-align:center;box-shadow:0 25px 50px rgba(0,0,0,0.15);position:relative}
+        .carta-decoration{position:absolute;top:20px;right:20px;font-size:60px;opacity:0.1}
+        .carta h2{color:#e74c3c;font-size:clamp(1.5rem,6vw,2rem)}
+        .versiculo{background:linear-gradient(135deg,#ffe8e8,#fff0f0);padding:15px;border-radius:15px;font-style:italic;color:#c0392b;margin-bottom:30px;border-left:4px solid #e74c3c}
+        .carta-conteudo p{color:#4a4a4a;font-size:clamp(1rem,4vw,1.1rem);line-height:1.8;margin-bottom:20px;text-align:left}
+        .destaque{background:linear-gradient(135deg,#ff6b6b20,#ff9a9e20);padding:20px;border-radius:20px;font-style:italic;font-size:1.1rem;color:#e74c3c;margin:25px 0;text-align:center;border:1px dashed #ff6b6b}
+        .promessa{background:linear-gradient(135deg,#ff6b6b,#ee5a24);padding:25px;border-radius:20px;margin:25px 0;color:white}
+        .promessa h3{font-size:1.2rem;margin-bottom:15px}
+        .final{margin-top:35px;padding-top:20px;border-top:2px solid #ffe0e0}
+        .final p{text-align:center !important;font-style:italic;color:#888}
+        .final h3{font-size:1.5rem;color:#e74c3c;margin:10px 0;animation:heartbeat 1.5s infinite}
+        @keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+        .data{color:#999;font-size:0.9rem;margin-top:10px}
+        .selo{margin-top:30px;font-size:0.9rem;color:#ff6b6b;opacity:0.7}
+        @media (max-width:768px){.carta{padding:30px 20px}}
+    </style>
+</head>
+<body>
+
+<section id="login">
+    <div class="glass">
+        <h1>❤️ Para Minha Atleta ❤️</h1>
+        <p>Uma surpresa te espera...</p>
+        <input type="password" id="senha" placeholder="Digite a senha">
+        <button onclick="entrar()">Entrar</button>
+        <div class="dica-musica">
+            💭 <strong>Dica:</strong> "Alegrem-se na esperança, sejam pacientes..." 🎶<br>
+            <small>Uma passagem + uma música = nosso início 💕</small>
+        </div>
+    </div>
+</section>
+
+<section id="conteudo">
+    <header>
+        <h1>Nossa História ❤️</h1>
+        <p>Cada foto guarda um momento especial com minha atleta favorita 🏃‍♀️💨</p>
+    </header>
+
+    <div class="timeline">
+        <div class="card">
+            <img src="imagens/WhatsApp Image 2026-06-08 at 19.39.10.jpeg">
+            <h2>Onde Tudo Começou</h2>
+            <p>Foi aqui que nossa história começou, minha atleta linda!</p>
+        </div>
+        
+        <div class="card">
+            <img src="imagens/WhatsApp Image 2026-06-08 at 19.52.00.jpeg">
+            <h2>Nosso Primeiro Encontro</h2>
+            <p>Foi ali, naquele momento, que eu consegui conversar com você de verdade. E foi ali que tive a certeza: você é a pessoa certa, a que vou amar para o resto da minha vida. 💕</p>
+        </div>
+        
+        <div class="card">
+            <img src="imagens/WhatsApp Image 2026-06-08 at 20.04.34.jpeg">
+            <h2>Momentos Inesquecíveis</h2>
+            <p>Todos os momentos ao seu lado são inesquecíveis.</strong> Cada sorriso, cada olhar, cada conversa, cada silêncio... tudo fica guardado no meu coração para sempre. Você transforma qualquer instante em memória especial. 💕</p></p>
+        </div>
+        
+        <div class="card">
+            <img src="imagens/WhatsApp Image 2026-06-08 at 19.58.15.jpeg">
+            <h2>Hoje ❤️</h2>
+            <p>E essa história continua... com minha atleta favorita!</p>
+        </div>
+    </div>
+
+    <div class="carta">
+        <div class="carta-decoration">✉️</div>
+        <h2>💌 Para o Amor da Minha Vida 💌</h2>
+        <div class="versiculo">"Romanos 12:12 - Alegrem-se na esperança, sejam pacientes na tribulação, perseverem na oração"</div>
+        <div class="carta-conteudo">
+            <p>Minha amada Lívia, ❤️</p>
+            <p><strong>Você foi o melhor presente que Deus poderia ter me dado.</strong> Quando olho para trás, tenho certeza que foi o dedo de Deus escrevendo nossa história.</p>
+            <p>Cada dia ao seu lado é um novo motivo para sorrir. Seus olhos iluminam meu mundo, seu sorriso aquece meu coração. E ver você correndo, se dedicando, sendo essa atleta incrível... me orgulha demais! </p>
+            <p><strong>Cada momento ao seu lado é único e inesquecível. Seja correndo, seja rindo, seja só existindo perto de mim... tudo vira memória guardada com carinho no meu coração. 💕</strong></p>
+            <div class="destaque">"Antes de te conhecer, eu não sabia o que era ser verdadeiramente feliz. Você chegou e tudo ganhou cor."</div>
+            <p>Lívia, você é a razão pela qual meus dias são mais leves, meus sorrisos mais sinceros. Você me faz querer ser melhor todos os dias. Minha atleta, minha inspiração, meu amor!</p>
+            <p><strong>Você é a resposta das minhas orações.</strong> Em cada momento difícil, você foi meu refúgio.</p>
+            <div class="promessa"><h3>🤝 Minha promessa 🤝</h3><p>Prometo cuidar de você, te respeitar, te fazer sorrir, torcer por você em cada conquista e ser seu porto seguro para sempre.</p></div>
+            <p>Obrigado por existir e tornar minha vida tão completa. Você é minha campeã todos os dias! 🏆</p>
+            <div class="final"><p>Com todo amor do mundo,</p><h3>❤️ EU TE AMO MUITOOOO MEU AMOR ❤️</h3><div class="data">Hoje e sempre 🌹</div></div>
+        </div>
+        <div class="selo">💌 Selado com amor 💌</div>
+    </div>
+</section>
+
+<script>
+    const SENHA_CORRETA = "romanos12";
+    let audioAtual = null;
+    let musicaTocando = false;
+
+    // TOCA MÚSICA DENTRO DO SITE ASSIM QUE ABRE
+    window.addEventListener('load', function() {
+        tocarMusicaDireto();
+    });
+
+    function tocarMusicaDireto() {
+        // Cria o player de áudio com o MP3 que você baixou
+        audioAtual = new Audio('musicas/romanos12.mp3');
+        audioAtual.loop = true; // Toca em loop infinito
+        audioAtual.volume = 0.5; // Volume 50%
+        
+        // Tenta tocar automaticamente
+        audioAtual.play().then(() => {
+            musicaTocando = true;
+            console.log("🎵 Música tocando!");
+        }).catch(erro => {
+            console.log("Navegador bloqueou áudio automático");
+            // Mostra mensagem para clicar em qualquer lugar
+            const msg = document.createElement('div');
+            msg.innerHTML = "🎵 Clique em qualquer lugar para tocar nossa música 🎵";
+            msg.style.cssText = `
+                position: fixed;
+                bottom: 80px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(0,0,0,0.7);
+                color: white;
+                padding: 8px 16px;
+                border-radius: 50px;
+                font-size: 12px;
+                z-index: 1001;
+                cursor: pointer;
+            `;
+            msg.onclick = function() {
+                audioAtual.play();
+                musicaTocando = true;
+                this.remove();
+            };
+            document.body.appendChild(msg);
+        });
+    }
+
+    function entrar() {
+        const senha = document.getElementById("senha").value.trim().toLowerCase();
+        const login = document.getElementById("login");
+        const conteudo = document.getElementById("conteudo");
+        
+        if (senha === SENHA_CORRETA) {
+            login.style.display = "none";
+            conteudo.style.display = "block";
+            animarCards();
+            criarCoracoes();
+        } else {
+            const input = document.getElementById("senha");
+            input.style.border = "2px solid #ff6b6b";
+            input.style.background = "#fff0f0";
+            alert("💔 Senha incorreta!\n\n💡 Dica: romanos12");
+            setTimeout(() => {
+                input.style.border = "";
+                input.style.background = "";
+            }, 2000);
+        }
+    }
+
+    function animarCards() {
+        const cards = document.querySelectorAll(".card");
+        setTimeout(() => {
+            cards.forEach((card, i) => setTimeout(() => card.classList.add("show"), i * 150));
+        }, 100);
+    }
+
+    function criarCoracoes() {
+        for (let i = 0; i < 40; i++) {
+            setTimeout(() => {
+                const heart = document.createElement("div");
+                heart.className = "floating-heart";
+                heart.innerHTML = ["❤️", "💖", "💕", "💗", "💓", "🏃‍♀️", "🏆", "🎵"][Math.floor(Math.random() * 8)];
+                heart.style.left = Math.random() * 100 + "%";
+                heart.style.animationDuration = Math.random() * 4 + 4 + "s";
+                heart.style.fontSize = Math.random() * 25 + 15 + "px";
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 8000);
+            }, i * 100);
+        }
+    }
+
+    document.getElementById("senha")?.addEventListener("keypress", (e) => { if (e.key === "Enter") entrar(); });
+</script>
+
+</body>
+</html>
